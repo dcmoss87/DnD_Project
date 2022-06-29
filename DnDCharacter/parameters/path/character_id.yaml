@@ -1,0 +1,9 @@
+name: character_id
+description: The unique identifier for the Character resource.
+in: path
+required: true
+schema:
+  type: integer
+  format: int32
+  example: 100
+  minimum: 1

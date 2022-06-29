@@ -1,0 +1,7 @@
+name: joke
+description: A characters joke.
+in: query
+required: false
+schema:
+  example: "Did you hear about the guy whose whole left side was cut off? He's all right now."
+  type: string

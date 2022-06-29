@@ -1,0 +1,7 @@
+type: object
+class:
+  name: string
+  nullable: false
+  description: >-
+    Character class.
+  example: Paladin

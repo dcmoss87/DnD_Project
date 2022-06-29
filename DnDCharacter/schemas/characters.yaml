@@ -1,0 +1,9 @@
+type: object
+properties:
+  data:
+    type: array
+    description: >-
+      Array of character objects
+    nullable: false
+    items:
+      $ref: "./character.yaml"

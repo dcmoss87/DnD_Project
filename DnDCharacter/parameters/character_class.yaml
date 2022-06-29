@@ -1,0 +1,7 @@
+name: class
+description: A characters class.
+in: query
+required: false
+schema:
+  example: "Paladin"
+  type: string

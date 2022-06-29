@@ -1,0 +1,251 @@
+openapi: 3.0.3
+
+servers:
+  - url: "http://127.0.0.1:9000"
+    description: Used for local development
+
+info:
+  description: >-
+    This api is intended to be used to create an example of a character for DnD.
+  version: "1.0.0"
+  title: DnD Character Generator
+  contact:
+    name: Derek Moss
+
+paths:
+  /DnDb:
+    get:
+      summary: Collection of all characters in the database.
+      description: >-
+        This is a list of characters currently in the database.
+      operationId: character_collection_get
+      parameters:
+        - $ref: "#/components/parameters/character_id"
+        - $ref: "#/components/parameters/character_name"
+        - $ref: "#/components/parameters/character_backstory"
+        - $ref: "#/components/parameters/character_class"
+        - $ref: "#/components/parameters/character_race"
+        - $ref: "#/components/parameters/character_equipment"
+        - $ref: "#/components/parameters/character_spell"
+        - $ref: "#/components/parameters/character_joke"
+        - $ref: "#/components/parameters/character_image"
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Characters"
+    post:
+      summary: Create a character.
+      description: >-
+        Create a character to enter into the database.
+      operationId: character_resource_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Character"
+              required:
+                - name
+                - backstory
+      responses:
+        "201":
+          description: Character created successfully
+        "400":
+          description: Bad request
+
+  /DnDb/{character_id}:
+    get:
+      summary: Individual character resource.
+      description: >-
+        Character currently in the database.
+      operationId: character_resource_get
+      parameters:
+        - $ref: "#/components/parameters/character_id"
+        - $ref: "#/components/parameters/character_name"
+        - $ref: "#/components/parameters/character_backstory"
+        - $ref: "#/components/parameters/character_class"
+        - $ref: "#/components/parameters/character_race"
+        - $ref: "#/components/parameters/character_equipment"
+        - $ref: "#/components/parameters/character_spell"
+        - $ref: "#/components/parameters/character_joke"
+        - $ref: "#/components/parameters/character_image"
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Character"
+        "204":
+          description: No character with this ID.
+    put:
+      summary: Updates a single character resource.
+      description: >-
+        This update to an existing character.
+      parameters:
+        - $ref: "#/components/parameters/character_id"
+      operationId: character_resource_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Character"
+              example:
+                name: Frodo
+                backstory: Frodo began his adventure in the shire.
+                class: Paladin
+                race: Dwarf
+                equipment: Longsword
+                spell: Frostbite
+                joke: Did you hear about the guy whose whole left side was cut off? He's all right now.
+                image: https://thronesapi.com/assets/images/sam.jpg
+      responses:
+        "200":
+          description: Character updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Character"
+        "400":
+          description: Bad request
+        "404":
+          description: Character doesn't exist.
+    delete:
+      summary: Deletes A given character resource.
+      description: >-
+        This is a deletion of a character resource.
+      parameters:
+        - $ref: "#/components/parameters/character_id"
+      operationId: character_resource_delete
+      responses:
+        "204":
+          description: No content, successful deletion of resource.
+        "403":
+          description: Forbidden
+
+  https://www.dnd5eapi.co/api/classes:
+    get:
+      summary: Collection of all character classes in the database.
+      description: >-
+        This is a list of classes currently in the database.
+      operationId: character_classes_collection_get
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Class"
+
+  https://www.dnd5eapi.co/api/races:
+    get:
+      summary: Collection of all character races in the database.
+      description: >-
+        This is a list of races currently in the database.
+      operationId: character_races_collection_get
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Class"
+
+  https://www.dnd5eapi.co/api/equipment:
+    get:
+      summary: Collection of all character equipment in the database.
+      description: >-
+        This is a list of equipment currently in the database.
+      operationId: character_equipment_collection_get
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Equipment"
+
+  https://www.dnd5eapi.co/api/spell:
+    get:
+      summary: Collection of all character spells in the database.
+      description: >-
+        This is a list of spells currently in the database.
+      operationId: character_spells_collection_get
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Spell"
+
+  https://icanhazdadjoke.com/:
+    get:
+      summary: Collection of all character jokes in the database.
+      description: >-
+        This is a list of jokes currently in the database.
+      operationId: character_jokes_collection_get
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Joke"
+
+  https://thronesapi.com/api/v2/Characters:
+    get:
+      summary: Collection of all character images in the database.
+      description: >-
+        This is a list of images currently in the database.
+      operationId: character_images_collection_get
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Image"
+
+components:
+  parameters:
+    character_id:
+      $ref: ./parameters/path/character_id.yaml
+    character_name:
+      $ref: ./parameters/character_name.yaml
+    character_backstory:
+      $ref: ./parameters/character_backstory.yaml
+    character_class:
+      $ref: ./parameters/character_class.yaml
+    character_race:
+      $ref: ./parameters/character_race.yaml
+    character_equipment:
+      $ref: ./parameters/character_equipment.yaml
+    character_spell:
+      $ref: ./parameters/character_spell.yaml
+    character_joke:
+      $ref: ./parameters/character_joke.yaml
+    character_image:
+      $ref: ./parameters/character_image.yaml
+
+  requestBodies: {}
+
+  schemas:
+    Character:
+      $ref: ./schemas/character.yaml
+    Characters:
+      $ref: ./schemas/characters.yaml
+    Class:
+      $ref: ./schemas/class.yaml
+    Race:
+      $ref: ./schemas/race.yaml
+    Equipment:
+      $ref: ./schemas/equipment.yaml
+    Spell:
+      $ref: ./schemas/spell.yaml
+    Joke:
+      $ref: ./schemas/joke.yaml
+    Image:
+      $ref: ./schemas/image.yaml

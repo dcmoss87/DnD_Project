@@ -1,0 +1,7 @@
+name: image
+description: A characters image.
+in: query
+required: false
+schema:
+  example: "https://thronesapi.com/assets/images/sam.jpg"
+  type: string

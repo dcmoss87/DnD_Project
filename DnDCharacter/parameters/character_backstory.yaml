@@ -1,0 +1,7 @@
+name: background
+description: A characters background.
+in: query
+required: false
+schema:
+  example: "background"
+  type: string

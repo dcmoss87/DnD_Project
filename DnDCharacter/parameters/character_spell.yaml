@@ -1,0 +1,7 @@
+name: spell
+description: A characters spell.
+in: query
+required: false
+schema:
+  example: "Frostbite"
+  type: string

@@ -1,0 +1,7 @@
+type: object
+class:
+  name: string
+  nullable: false
+  description: >-
+    Character image.
+  example: https://thronesapi.com/assets/images/sam.jpg

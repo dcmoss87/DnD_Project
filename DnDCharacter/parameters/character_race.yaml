@@ -1,0 +1,7 @@
+name: race
+description: A characters race.
+in: query
+required: false
+schema:
+  example: "Dwarf"
+  type: string

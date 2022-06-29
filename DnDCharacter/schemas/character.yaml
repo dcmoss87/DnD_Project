@@ -1,0 +1,61 @@
+type: object
+properties:
+  id:
+    type: integer
+    x-yv-proto-id: 1
+    description: Unique character ID.
+    format: int32
+    readOnly: true
+    example: 1
+  name:
+    type: string
+    nullable: false
+    maxLength: 70
+    minLength: 1
+    description: >-
+      Name of character.
+    example: Frodo
+  backstory:
+    type: string
+    nullable: false
+    minLength: 10
+    maxLength: 5000
+    description: >-
+      Character backstory.
+    example: Frodo began his adventure in the shire.
+  class:
+    type: string
+    nullable: false
+    description: >-
+      Character class.
+    example: Paladin
+  race:
+    type: string
+    nullable: false
+    description: >-
+      Character race.
+    example: Dwarf
+  equipment:
+    type: string
+    nullable: false
+    description: >-
+      Character's equipment.
+    example: Longsword
+  spell:
+    type: string
+    nullable: false
+    description: >-
+      Character's main spell.
+    example: Frostbite
+  joke:
+    type: string
+    nullable: false
+    description: >-
+      Random joke that the character can use.
+    example: Did you hear about the guy whose whole left side was cut off? He's all right now.
+  image:
+    type: string
+    nullable: false
+    description: >-
+      Link to image selected to represent the character.
+    example: https://thronesapi.com/assets/images/sam.jpg

@@ -1,0 +1,7 @@
+name: name
+description: A characters name.
+in: query
+required: false
+schema:
+  example: "Frodo"
+  type: string

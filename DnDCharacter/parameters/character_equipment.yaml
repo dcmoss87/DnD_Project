@@ -1,0 +1,7 @@
+name: equipment
+description: A characters equipment.
+in: query
+required: false
+schema:
+  example: "Longsword"
+  type: string
